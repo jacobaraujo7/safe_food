@@ -63,6 +63,7 @@ class Email {
 
 Um usecase não deve chamar outro usecase. Este também não deve fazer acesso direto a componentes externos, necessitando o uso de algum design ou instrução da camada de adaptação.
 UseCases devem ter uma interface e uma implementação separadas.
+O método call deve conter apenas um argumento. Se houver a necessidade de mais argumentos, favor usar DTO.
 
 ```dart
 abstract class FetchFoods {
@@ -70,15 +71,27 @@ abstract class FetchFoods {
 }
 
 class FetchFoodsWithFoodRepository implements FetchFoods {
-    Future<List<FoodEntity>> call(){
+    Future<List<FoodEntity>> call(FetchFoodDTO dto){
         return [];
     }
 }
 ```
 
+**Data Transfer Object**: Deve ser usado para mitigar o uso de mais de um argumento nas execuções de regras.
+
+```dart
+class FetchFoodDTO {
+    final int page;
+    final int offset;
+    final String? query;
+
+    FetchFoodDTO(this.page, this.offset, this.query);
+}
+```
+
 
 ### 1.2 Camada de adaptação (Interface Adaptation)
-Essa camada server pra ligar o domain com os componentes externos.
+Essa camada serve pra ligar o domain com os componentes externos.
 Essa camada será responsável por agir como intermediador, transformando e adaptando os dados.
 
 
