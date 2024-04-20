@@ -94,6 +94,113 @@ class FetchFoodDTO {
 Essa camada serve pra ligar o domain com os componentes externos.
 Essa camada será responsável por agir como intermediador, transformando e adaptando os dados.
 
+### 1.1.1 Design da adaptação
+
+**Princípio inversão de controle**: Esse principio é necessário para força o desenvolvedor a utilizar interfaces ou classes abstratas em vez de usar diretamente a implementação
+
+**Injeção dependência**: Automatizar a inversão de controle.
+
+**Adapter**: Lida com as conversões de dados [Conversão de dados](https://refactoring.guru/design-patterns/adapter).
+
+```dart
+class UserAdapter {
+    const UserAdapter._();
+
+    static UserEntity fromJson(dynamic json){
+        ...
+    }
+
+    static Map<String, dynamic> toJson(UserEntity entity){
+        ...
+    }
+
+}
+
+```
 
 ### 1.3 Camada de componentes externos (Frameworks and Drivers)
 Deve fornecer interação com o usuário e comunicações com drivers externos como consumo de API ou banco de dados.
+
+
+### 1.1.1 Packages
+
+- **Base de dados local**: SQflite.
+- **Hashcode e operadores de igualdade**: Equatable.
+- **Sistema de injeção de dependências**: auto_injector.
+
+
+# 2. Estrutura de pasta
+
+```
+.
+└── lib/
+    ├── app/
+    │   ├── core/
+    │   │   └── services/
+    │   │       └── validator_service.dart
+    │   └── features/
+    │       └── auth/
+    │           ├── data/
+    │           │   ├── adapters/
+    │           │   │   └── user_adapter.dart
+    │           │   ├── datasources/
+    │           │   │   └── remote_datasouce.dart
+    │           │   └── repositories/
+    │           │       └── auth_repository.dart
+    │           ├── presenter/
+    │           │   ├── widgets/
+    │           │   │   └── password_field.dart
+    │           │   ├── pages/
+    │           │   │   └── auth_page.dart
+    │           │   └── stores/
+    │           │       └── auth_store.dart
+    │           ├── domain/
+    │           │   ├── entities/
+    │           │   │   └── user_entity.dart
+    │           │   ├── usecases/
+    │           │   │   ├── change_password_usecase.dart
+    │           │   │   ├── login_usecase.dart
+    │           │   │   └── logout_usecase.dart
+    │           │   ├── repositories/
+    │           │   │   └── auth_repository.dart
+    │           │   ├── dtos/
+    │           │   │   └── credentials_dto.dart
+    │           │   └── vos/
+    │           │       ├── email_vo.dart
+    │           │       └── username_vo.dart
+    │           └── auth_module.dart
+    └── main.dart
+```
+
+## 2.2 Pasta Core
+
+Aqui ficará todos componentes comuns a todas as features.
+
+## 2.3 Pasta Feature
+
+Essa pasta representará as camadas das features.
+
+### 2.3.1 Domain
+
+Responsável por guardar os usecases e entidades da aplicação.
+
+### 2.3.2 Data
+
+Responsável por implementar os componentes externos a regra de de negócio.
+
+### 2.3.3 Presenter
+
+Responsável pela representação visual do app
+
+## 2.4 Nomeclatura de arquivos
+
+Todos os arquivos devem finalizar com _nome_do_design_pattern, como por exemplo:
+
+```
+product_repository.dart
+
+//entity
+user_entity.dart
+
+```
+Arquivos não nomeados dessa forma serão considerados errados.
