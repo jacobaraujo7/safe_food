@@ -1,9 +1,11 @@
 # ARCHITECTURE
 
 ## 1 Camadas
+
 ![!alt](assets/docs/images/layers.png)
 
 ### 1.1 Camada de regra de negócio (Domain)
+
 Responsável por representar e executar o que o sistema deve fazer, ou seja, as regras de negócio.
 Essa camada DEVE ser a mais pura possível.
 Essa camada não DEVE se conectar diretamente a uma camada externa, e sim por meio da camada de adaptação de interface (vide: 1.2).
@@ -39,6 +41,7 @@ class UserEntity extends Equatable {
     List get props => [id, name, email];
 }
 ```
+
 **ValueObject**: Auxiliar na validação dos dados. [Documentation](https://medium.com/@lexitrainerph/deep-dive-into-the-value-object-pattern-in-c-basics-to-advanced-b058b49d8565#:~:text=Introduction,which%20have%20a%20distinct%20identity.).
 
 Deve ser uma instância imutável.
@@ -57,7 +60,6 @@ class Email {
     }
 }
 ```
-
 
 **Usecase**: Responsável por executar as regras de negócio. [Documentation](https://martinfowler.com/bliki/UseCase.html).
 
@@ -89,8 +91,8 @@ class FetchFoodDTO {
 }
 ```
 
-
 ### 1.2 Camada de adaptação (Interface Adaptation)
+
 Essa camada serve pra ligar o domain com os componentes externos.
 Essa camada será responsável por agir como intermediador, transformando e adaptando os dados.
 
@@ -119,8 +121,8 @@ class UserAdapter {
 ```
 
 ### 1.3 Camada de componentes externos (Frameworks and Drivers)
-Deve fornecer interação com o usuário e comunicações com drivers externos como consumo de API ou banco de dados.
 
+Deve fornecer interação com o usuário e comunicações com drivers externos como consumo de API ou banco de dados.
 
 ### 1.1.1 Packages
 
@@ -128,10 +130,9 @@ Deve fornecer interação com o usuário e comunicações com drivers externos c
 - **Hashcode e operadores de igualdade**: Equatable.
 - **Sistema de injeção de dependências**: auto_injector.
 
+## 2. Estrutura de pasta
 
-# 2. Estrutura de pasta
-
-```
+```dart
 .
 └── lib/
     ├── app/
@@ -196,11 +197,12 @@ Responsável pela representação visual do app
 
 Todos os arquivos devem finalizar com _nome_do_design_pattern, como por exemplo:
 
-```
+```dart
 product_repository.dart
 
 //entity
 user_entity.dart
 
 ```
+
 Arquivos não nomeados dessa forma serão considerados errados.
