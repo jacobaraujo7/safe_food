@@ -1,16 +1,19 @@
-# safe_food
+# Safe Food APP
 
-A new Flutter project.
+## Links úteis
 
-## Getting Started
+##### Referência para o frontend
 
-This project is a starting point for a Flutter application.
+<https://www.figma.com/design/F74scG7Nye4wTv3rNqTLk0/Untitled?node-id=0-1&t=JEycKkpGRoBRXd6e-1>
 
-A few resources to get you started if this is your first Flutter project:
+##### Briefing e descrição do projeto
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+<https://docs.google.com/document/d/1om2eMGV7jAtn8-vgFQhFgHATvX8PAfXQ6xv0eOGOQMU/edit>
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+##### Repositório do projeto
+
+<https://github.com/jacobaraujo7/safe_food/tree/main>
+
+##### Backlog do projeto
+
+<https://github.com/users/jacobaraujo7/projects/1/views/1>
